@@ -175,7 +175,7 @@ eventStream (ConnData conn seshID auth eventChan) seqKey interval send userSends
   loop :: IO ConnLoopState
   loop = do
     eitherPayload <- getPayloadTimeout conn interval log
-    putStrLn ("<-- " <> show eitherPayload)
+    putStrLn ("<-- [1]" <> show eitherPayload)
     case eitherPayload :: Either ConnectionException GatewayReceivable of
       Left (CloseRequest code str) -> case code of
           -- see Discord and MDN documentation on gateway close event codes
